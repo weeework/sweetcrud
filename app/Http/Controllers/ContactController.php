@@ -83,6 +83,10 @@ class ContactController extends Controller
     public function destroy($id)
     {
         Contact::destroy($id);
+        notify()->flash('Done!', 'success', [
+            'timer' => 1500,
+            'text' => 'Contact successfully deleted',
+        ]);
         return redirect()->route('contact.index');
     }
 }
